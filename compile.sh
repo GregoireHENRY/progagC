@@ -1,8 +1,11 @@
 FLAGS="-Wall -Wextra -pedantic -std=c99"
-INCLUDES="propag.c math.c toolbox.c"
+FILES=("main.c" "propag.c" "math.c" "toolbox.c")
 LIBS=("m")
 
 LFLAGS_ARR=("${LIBS[@]/#/-l}")
 LFLAGS=$( IFS=$' '; echo "${LFLAGS_ARR[*]}" )
 
-gcc -o a main.c $INCLUDES $FLAGS $LFLAGS
+INCLUDES_ARR=("${FILES[@]/#/src/}")
+INCLUDES=$( IFS=$' '; echo "${INCLUDES_ARR[*]}" )
+
+gcc -o a $INCLUDES $FLAGS $LFLAGS
